@@ -8,8 +8,6 @@ import appWriteService from "../../appwrite/config";
 function PostForm({ post }) {
   const navigate = useNavigate();
 
-  // console.log(post);
-
   const { register, handleSubmit, watch, setValue, getValues, control } =
     useForm({
       defaultValues: {
@@ -49,7 +47,7 @@ function PostForm({ post }) {
         data.featuredImage = fileId;
         const dbPost = await appWriteService.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userData?.$id,
         });
 
         if (dbPost) {
